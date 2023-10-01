@@ -1,1 +1,5 @@
 node_modules
+
+# Database files
+dev.db
+dev.db-journal
