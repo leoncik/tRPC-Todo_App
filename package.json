@@ -1,0 +1,14 @@
+{
+  "name": "trpc-todo-app",
+  "version": "1.0.0",
+  "description": "A Todo App to play around with tRPC.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run dev --workspace=client"
+  },
+  "workspaces": [
+    "./packages/client"
+  ],
+  "author": "Léonard Wojcik",
+  "license": "MIT"
+}
