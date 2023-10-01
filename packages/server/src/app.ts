@@ -1,15 +1,27 @@
-import express, { Express } from 'express';
-import cors from 'cors';
+import express from "express";
+import cors from "cors";
+import { inferAsyncReturnType, initTRPC } from "@trpc/server";
+import * as trpcExpress from "@trpc/server/adapters/express";
+import { appRouter } from "./routers";
 
-const app: Express = express();
 const port: number = 3000;
 
-// Middlewares
-app.use(cors());
-app.use('/', () => {
-    console.log("It works again.");    
-});
+// created for each request
+const createContext = ({
+  req,
+  res,
+}: trpcExpress.CreateExpressContextOptions) => ({}); // no context
+type Context = inferAsyncReturnType<typeof createContext>;
+const t = initTRPC.context<Context>().create();
 
-app.listen(port, () => {
-    console.log(`Listening for requests on port ${port}`);
-});
+const app = express();
+
+app.use(cors);
+app.use(
+  "/trpc",
+  trpcExpress.createExpressMiddleware({
+    router: appRouter,
+    createContext,
+  })
+);
+app.listen(4000);
