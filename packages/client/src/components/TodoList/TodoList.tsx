@@ -1,4 +1,4 @@
-import { trpc } from "../utils/trpc";
+import { trpc } from "../../utils/trpc";
 
 function TodoList() {
   const todoQuery = trpc.todo.getAll.useQuery();
