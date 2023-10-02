@@ -11,7 +11,11 @@ function TodoList() {
   return (
     <ul className={classes["todo-list"]}>
       {todoQuery.data.map((todo) => (
-        <TodoElement content={todo.content} isDone={todo.isDone} />
+        <TodoElement
+          key={todo.id}
+          content={todo.content}
+          isDone={todo.isDone}
+        />
       ))}
     </ul>
   );
