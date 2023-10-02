@@ -1,4 +1,5 @@
 import { trpc } from "../../utils/trpc";
+import TodoElement from "../TodoElement/TodoElement";
 
 function TodoList() {
   const todoQuery = trpc.todo.getAll.useQuery();
@@ -6,7 +7,13 @@ function TodoList() {
   if (todoQuery.isError) return <h2>Error: could not retrieve todos.</h2>;
   if (todoQuery.isLoading) return <span>Loading...</span>;
 
-  return <pre>{JSON.stringify(todoQuery.data, null, 2)}</pre>;
+  return (
+    <ul>
+      {todoQuery.data.map((todo) => (
+        <TodoElement content={todo.content} isDone={todo.isDone} />
+      ))}
+    </ul>
+  );
 }
 
 export default TodoList;
