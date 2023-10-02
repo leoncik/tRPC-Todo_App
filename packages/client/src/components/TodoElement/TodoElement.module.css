@@ -1,0 +1,21 @@
+.todo {
+    padding: 1rem;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.status {
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+}
+.done {
+    background-color: green;
+}
+.not-done {
+    background-color: crimson;
+}
