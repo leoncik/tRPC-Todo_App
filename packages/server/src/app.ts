@@ -16,7 +16,7 @@ const t = initTRPC.context<Context>().create();
 
 const app = express();
 
-app.use(cors);
+app.use(cors());
 app.use(
   "/trpc",
   trpcExpress.createExpressMiddleware({
@@ -24,4 +24,4 @@ app.use(
     createContext,
   })
 );
-app.listen(4000);
+app.listen(port);
