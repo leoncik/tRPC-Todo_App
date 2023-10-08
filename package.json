@@ -15,7 +15,8 @@
   "license": "MIT",
   "devDependencies": {
     "husky": "^8.0.3",
-    "lint-staged": "^14.0.1"
+    "lint-staged": "^14.0.1",
+    "prettier": "^3.0.3"
   },
   "lint-staged": {
     "packages/client/**/*.{ts,tsx}": [
@@ -23,6 +24,7 @@
     ],
     "packages/server/**/*.{ts,tsx}": [
       "npm run lint --workspace=server"
-    ]
+    ],
+    "packages/**/*.{ts,tsx,css,md,html}": "prettier --write"
   }
 }
