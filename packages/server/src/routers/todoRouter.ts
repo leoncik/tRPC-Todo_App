@@ -22,4 +22,15 @@ export const todoRouter = router({
         },
       });
     }),
+
+  deleteById: publicProcedure
+    .input(z.object({ id: z.string() }))
+    .mutation((opts) => {
+      const { input } = opts;
+      return prisma.todo.delete({
+        where: {
+          id: input.id,
+        },
+      });
+    }),
 });
