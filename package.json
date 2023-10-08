@@ -4,12 +4,23 @@
   "description": "A Todo App to play around with tRPC.",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run dev --workspace=client & npm run dev --workspace=server"
+    "dev": "npm run dev --workspace=client & npm run dev --workspace=server",
+    "prepare": "husky install"
   },
   "workspaces": [
     "./packages/client",
     "./packages/server"
   ],
   "author": "Léonard Wojcik",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1"
+  },
+  "lint-staged": {
+    "packages/**/*.{ts,tsx}": [
+      "eslint --fix"
+    ],
+    "packages/**/*.{ts,tsx,css,md,html}": "prettier --write"
+  }
 }
