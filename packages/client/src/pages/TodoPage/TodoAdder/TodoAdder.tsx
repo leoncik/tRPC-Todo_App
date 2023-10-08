@@ -15,7 +15,7 @@ function TodoAdder() {
         onSuccess: () => {
           console.log("A new todo has been added");
           setNewTodoContent("");
-          // Invalidate the data to update the UI
+          // Invalidate the data to update the UI by refetch
           trpcUtils.todo.invalidate();
         },
       }
