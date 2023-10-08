@@ -5,6 +5,7 @@ import { trpc } from "../../../utils/trpc";
 function TodoAdder() {
   const [newTodoContent, setNewTodoContent] = useState("");
   const addTodoMutation = trpc.todo.create.useMutation();
+  const trpcUtils = trpc.useContext();
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -14,6 +15,8 @@ function TodoAdder() {
         onSuccess: () => {
           console.log("A new todo has been added");
           setNewTodoContent("");
+          // Invalidate the data to update the UI
+          trpcUtils.todo.invalidate();
         },
       }
     );
