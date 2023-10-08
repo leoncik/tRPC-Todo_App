@@ -1,4 +1,9 @@
-.add-wrapper {
+.add-todo-field-group {
   display: flex;
   gap: 18px;
+}
+
+.submit-button {
+  margin-top: 32px;
+  width: 100%;
 }
