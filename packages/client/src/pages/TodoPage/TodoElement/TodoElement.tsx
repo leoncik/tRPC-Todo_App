@@ -10,6 +10,7 @@ interface TodoElementProps {
 
 function TodoElement({ content, isDone, id }: TodoElementProps) {
   const deleteTodoMutation = trpc.todo.deleteById.useMutation();
+  const updateTodoMutation = trpc.todo.updateById.useMutation();
   const trpcUtils = trpc.useContext();
 
   function handleDelete() {
@@ -24,16 +25,30 @@ function TodoElement({ content, isDone, id }: TodoElementProps) {
       }
     );
   }
+
+  function handleUpdate() {
+    updateTodoMutation.mutate(
+      { id: id, isDone: !isDone },
+      {
+        onSuccess: () => {
+          console.log("Todo updated.");
+          // Invalidate the data to update the UI by refetch
+          trpcUtils.todo.invalidate();
+        },
+      }
+    );
+  }
   return (
     <li className={classes.todo}>
       <p>{content}</p>{" "}
-      <span
+      <button
+        onClick={handleUpdate}
         className={`${classes.status} ${
           isDone ? classes.done : classes["not-done"]
         }`}
       >
-        {isDone ? "DONE" : "TODO"}{" "}
-      </span>
+        {isDone ? "DONE" : "TODO"}
+      </button>
       <button className={classes["delete-button"]} onClick={handleDelete}>
         <img src={deleteIcon} alt="Delete todo" />
       </button>
