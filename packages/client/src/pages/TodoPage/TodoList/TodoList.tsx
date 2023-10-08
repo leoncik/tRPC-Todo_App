@@ -13,6 +13,7 @@ function TodoList() {
       {todoQuery.data.map((todo) => (
         <TodoElement
           key={todo.id}
+          id={todo.id}
           content={todo.content}
           isDone={todo.isDone}
         />
