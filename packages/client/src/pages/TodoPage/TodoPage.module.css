@@ -1,0 +1,12 @@
+.title {
+  text-align: center;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.todo-list {
+  width: 300px;
+}

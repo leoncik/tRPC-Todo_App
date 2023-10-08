@@ -1,4 +1,4 @@
-import { trpc } from "../../utils/trpc";
+import { trpc } from "../../../utils/trpc";
 import TodoElement from "../TodoElement/TodoElement";
 import classes from "./TodoList.module.css";
 

@@ -1,9 +1,8 @@
 import { useState } from "react";
-import "./App.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink } from "@trpc/client";
 import { trpc } from "./utils/trpc";
-import TodoList from "./components/TodoList/TodoList";
+import TodoPage from "./pages/TodoPage/TodoPage";
 
 function App() {
   const [queryClient] = useState(() => new QueryClient());
@@ -26,10 +25,7 @@ function App() {
   return (
     <trpc.Provider client={trpcClient} queryClient={queryClient}>
       <QueryClientProvider client={queryClient}>
-        <div>
-          <h1>My todos:</h1>
-          <TodoList />
-        </div>
+        <TodoPage />
       </QueryClientProvider>
     </trpc.Provider>
   );
