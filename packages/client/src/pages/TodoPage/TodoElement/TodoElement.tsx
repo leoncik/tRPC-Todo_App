@@ -1,4 +1,5 @@
 import classes from "./TodoElement.module.css";
+import deleteIcon from "../../../assets/trash-2.svg";
 
 interface TodoElementProps {
   content: string;
@@ -16,6 +17,9 @@ function TodoElement({ content, isDone }: TodoElementProps) {
       >
         {isDone ? "DONE" : "TODO"}{" "}
       </span>
+      <button className={classes["delete-button"]}>
+        <img src={deleteIcon} alt="Delete todo" />
+      </button>
     </li>
   );
 }
