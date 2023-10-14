@@ -29,6 +29,14 @@ git clone https://github.com/leoncik/tRPC-Todo_App.git
 npm i --workspaces
 ```
 
+4. Create a ".env" file at the root of the server directory to configure the database. For more convenience you can directly use the content of the ".env.example" file provided.
+
+5. Run Prisma migrations:
+
+```sh
+npm run prisma:migrate --workspace=server
+```
+
 ### Run the project
 
 Once you have completed the installation steps, you can run the project with:
