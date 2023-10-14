@@ -48,3 +48,9 @@ npm i @trpc/server --workspace=server
 ## Gotchas
 
 -   When working with _npm workspaces_, make sure that the **name** key of your package.json in the child folders of the _packages_ directory matches the name provided in the package.json at the root level. I first named my client with a different name than client.
+
+- When installing dependencies I had an error with Husky (command not found). To fix this error I had to edit the "prepare" script on my root package.json:
+
+```json
+"prepare": "node -e \"if (process.env.NODE_ENV !== 'production'){process.exit(1)} \" || husky install",
+```
